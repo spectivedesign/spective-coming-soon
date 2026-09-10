@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spective — Design Studio</title>
+
+    <meta
+        name="description"
+        content="Spective is a design studio building distinctive brands and digital experiences for ambitious businesses."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #ff542d;
+            --orange-soft: #ff633b;
+            --cream: #f4e9e3;
+            --bg: #160000;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            background:
+                radial-gradient(
+                    circle at 22% 12%,
+                    rgba(150, 42, 8, 0.42),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 76% 68%,
+                    rgba(130, 20, 0, 0.42),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 50% 38%,
+                    rgba(90, 15, 0, 0.25),
+                    transparent 40%
+                ),
+                #160000;
+
+            color: var(--cream);
+            font-family: "Geist", sans-serif;
+            overflow-x: hidden;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(
+                    circle at center,
+                    transparent 30%,
+                    rgba(0,0,0,.15) 100%
+                );
+            z-index: 20;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .page {
+            min-height: 100svh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        .top-logo {
+            position: relative;
+            z-index: 10;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding-top: 22px;
+            height: 110px;
+        }
+
+        .logo {
+            width: 58px;
+            height: auto;
+            display: block;
+        }
+
+        /*
+        Replace the logo above with your actual logo:
+
+        <img src="logo.svg" class="logo" alt="Spective">
+        */
+
+        /* =========================
+           PROJECT MARQUEE
+        ========================= */
+
+        .marquee {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 44px;
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+
+            animation:
+                marquee 42s linear infinite;
+
+            will-change: transform;
+        }
+
+        .marquee-group {
+            display: flex;
+            gap: 16px;
+            padding-right: 16px;
+        }
+
+        .project {
+            width: clamp(260px, 22vw, 450px);
+            aspect-ratio: 1.65 / 1;
+
+            border-radius: 10px;
+            overflow: hidden;
+
+            flex-shrink: 0;
+
+            background: #250909;
+        }
+
+        .project img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+
+            filter: brightness(.72);
+        }
+
+        @keyframes marquee {
+
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+
+        }
+
+        /* =========================
+           SPECTIVE DOT TEXT
+        ========================= */
+        .wordmark {
+            position: relative;
+            width: 100%;
+            height: clamp(110px, 13.0vw, 250px);
+            margin-top: 20px;
+	    margin-bottom:48px;
+            display: block;
+            overflow: visible;
+            cursor: crosshair;
+        }
+
+        #dotCanvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .mobile-wordmark {
+            display: none;
+        }
+
+        /* =========================
+           DESCRIPTION
+        ========================= */
+
+        .content {
+            position: relative;
+            z-index: 5;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            text-align: center;
+
+            margin-top: 0;
+            padding: 0 24px;
+        }
+
+        .coming-soon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            border: 1px solid rgba(255, 98, 59, .45);
+            border-radius: 100px;
+
+            padding: 7px 14px;
+
+            color: var(--orange);
+            font-size: 12px;
+            font-weight: 500;
+
+            margin-bottom: 24px;
+
+            background: rgba(255, 71, 32, .025);
+        }
+
+        .coming-soon::before {
+            content: "";
+
+            width: 5px;
+            height: 5px;
+
+            border-radius: 50%;
+
+            background: var(--orange);
+
+            box-shadow:
+                0 0 10px rgba(255, 84, 45, .7);
+        }
+
+        .description {
+            max-width: 540px;
+
+            color: var(--cream);
+
+            font-size: clamp(14px, 1.2vw, 17px);
+            line-height: 1.4;
+
+            letter-spacing: -.025em;
+        }
+
+        /* =========================
+           EMAIL FORM
+        ========================= */
+
+        .signup {
+            margin-top: 64px;
+
+            width: min(420px, calc(100% - 40px));
+
+	    display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 84, 45, .7);
+
+            margin-bottom: 48px;
+        }
+
+        .signup input {
+            flex: 1;
+
+            min-width: 0;
+
+            border: 0;
+            outline: 0;
+
+            background: transparent;
+
+            padding: 10px 10px;
+
+            color: var(--cream);
+
+            font-family: inherit;
+            font-size: 12px;
+
+            text-align: center;
+        }
+
+        .signup input::placeholder {
+            color: rgba(244, 233, 227, .48);
+        }
+
+        .signup button {
+            border: 0;
+            background: transparent;
+
+            color: var(--orange);
+
+            font-family: inherit;
+            font-size: 12px;
+
+            padding: 10px 8px;
+
+            cursor: pointer;
+
+            transition:
+                opacity .25s ease,
+                transform .25s ease;
+        }
+
+        .signup button:hover {
+            opacity: .7;
+            transform: translateX(3px);
+        }
+
+        .signup button:disabled {
+            opacity: .5;
+            cursor: wait;
+        }
+
+        .form-message {
+            position: absolute;
+
+            transform: translateY(35px);
+
+            font-size: 11px;
+
+            opacity: 0;
+
+            transition: opacity .25s ease;
+        }
+
+        .form-message.show {
+            opacity: 1;
+        }
+
+        .form-message.success {
+            color: #a6d69a;
+        }
+
+        .form-message.error {
+            color: #ff7658;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            position: absolute;
+
+            left: 28px;
+            right: 28px;
+            bottom: 20px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            pointer-events: none;
+
+            z-index: 5;
+        }
+
+        .footer-left,
+        .footer-right {
+            color: var(--orange);
+
+            font-size: 10px;
+            font-weight: 500;
+
+            letter-spacing: -.03em;
+        }
+
+        .footer-left {
+            text-transform: uppercase;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .top-logo {
+                height: 105px;
+                padding-top: 18px;
+            }
+
+            .logo {
+                width: 48px;
+            }
+
+            .marquee {
+                margin-top: 28px;
+            }
+
+            .project {
+                width: 275px;
+            }
+
+                        .wordmark {
+                width: 100%;
+                height: auto;
+                margin-top: 16px;
+                margin-bottom: 42px;
+                cursor: default;
+            }
+
+            .wordmark #dotCanvas {
+                display: none;
+            }
+
+            .mobile-wordmark {
+                display: block;
+                width: 94%;
+                height: auto;
+                margin: 0 auto;
+            }
+
+
+
+            .description {
+                max-width: 330px;
+            }
+
+            .signup {
+                margin-bottom: 72px;
+            }
+
+            footer {
+                left: 18px;
+                right: 18px;
+                bottom: 20px;
+            }
+
+            .footer-left,
+            .footer-right {
+                font-size: 8px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .marquee-track {
+                animation-play-state: paused;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="page">
+
+    <!-- =========================
+         TOP LOGO
+    ========================== -->
+
+    <header class="top-logo">
+
+        <!-- Replace this with your actual Spective logo -->
+        <svg width="68" height="53" viewBox="0 0 68 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.5693 26.3604C18.0341 32.6935 25.4063 36.8096 33.7275 36.8096C42.0389 36.8094 49.4019 32.6737 53.8682 26.3818L54.2627 26.3828C61.492 26.3829 67.4258 32.2878 67.4258 39.5459C67.4258 46.7752 61.5208 52.708 54.2627 52.708H1.58398V26.3545L13.5693 26.3604ZM42.0205 26.376C41.9932 30.9037 38.2898 34.5918 33.7559 34.5918L33.7275 34.6201C32.0283 34.6201 30.444 34.1018 29.1191 33.209C30.6456 31.4523 32.8919 30.3292 35.3975 30.3291C37.9031 30.3291 37.7881 30.5886 38.8535 31.0781C37.9116 29.7366 37.3662 28.112 37.3564 26.373L42.0205 26.376ZM30.1533 26.3691C30.1404 28.3465 29.2518 30.6278 27.8223 32.0859C26.3912 30.5975 25.5012 28.5969 25.4902 26.3672L30.1533 26.3691ZM65.8418 26.3252H53.8672C49.4008 20.0056 42.0383 15.8996 33.7275 15.8994C25.4167 15.8994 18.0533 20.0341 13.5869 26.3252H13.1631C5.93374 26.3252 0 20.4203 0 13.1621C0.000255516 5.93298 5.9051 0 13.1631 0H65.8418V26.3252ZM33.7559 18.0596C38.3065 18.0596 42.0223 21.7746 42.0225 26.3252H37.3564C37.3565 24.5684 38.0478 22.4952 39.2285 21.084C37.7596 22.38 35.8584 23.1572 33.7559 23.1572C31.6534 23.1572 29.7521 22.38 28.2832 21.084C29.464 22.524 30.1552 24.338 30.1553 26.3252H25.4893C25.4894 21.7458 29.2053 18.0596 33.7559 18.0596Z" fill="#F04C24"/>
+</svg>
+    </header>
+
+
+    <!-- =========================
+         PROJECT MARQUEE
+    ========================== -->
+
+    <section class="marquee">
+
+        <div class="marquee-track">
+
+            <!-- GROUP 1 -->
+
+            <div class="marquee-group">
+
+                <div class="project">
+                    <img src="images/01.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/02.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/03.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/04.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/05.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/06.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/07.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/08.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/09.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/10.jpg" alt="">
+                </div>
+
+            </div>
+
+
+            <!-- GROUP 2
+                 Duplicate required for seamless loop -->
+
+            <div class="marquee-group">
+
+                <div class="project">
+                    <img src="images/01.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/02.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/03.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/04.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/05.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/06.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/07.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/08.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/09.jpg" alt="">
+                </div>
+
+                <div class="project">
+                    <img src="images/10.jpg" alt="">
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         INTERACTIVE DOT SPECTIVE
+    ========================== -->
+
+    <section class="wordmark">
+
+        <canvas id="dotCanvas"></canvas>
+
+        <svg class="mobile-wordmark"
+             viewBox="0 0 1124 158"
+             xmlns="http://www.w3.org/2000/svg"
+             aria-label="Spective"
+             role="img">
+            <path d="M72.2344 0C113.071 7.48757e-05 141.64 12.2688 141.114 52.5801H101.854C99.9265 41.5383 90.9876 34.5274 71.1826 34.5273C53.8314 34.5273 45.9445 39.9608 45.9443 48.1982C45.9443 53.9821 49.9755 59.2405 62.5947 61.3438L78.1934 64.1475C107.112 69.0549 145.32 71.1587 145.32 109.893C145.32 140.915 120.783 157.215 71.8838 157.04C22.9844 156.865 -0.852675 141.09 0.0234375 104.109H39.6338C40.3351 115.326 49.8004 122.336 71.8838 122.512C91.8641 122.687 101.679 116.552 101.679 108.14C101.679 101.655 97.1215 96.7476 81.6982 94.2939L63.1201 91.3145C35.2527 86.5822 3.70431 81.8499 3.7041 46.0957C3.7041 17.3518 27.1906 0 72.2344 0ZM525.602 0C560.304 7.15155e-05 595.884 15.2483 601.492 62.9209H559.428C554.696 45.9202 542.252 38.0333 525.602 38.0332C504.044 38.0332 487.218 54.1575 487.218 78.5195C487.218 102.706 504.044 119.007 525.602 119.007C542.252 119.007 554.695 111.12 559.428 93.7686H601.492C595.883 141.791 560.655 157.04 525.602 157.04C476.527 157.04 443.576 125.316 443.576 78.5195C443.576 31.7233 476.527 0 525.602 0ZM234.945 4.9082C274.731 4.90824 297.866 23.136 297.866 61.1689C297.866 99.3773 274.731 117.43 235.12 117.43H197.613V152.133H153.621V4.9082H234.945ZM436.903 40.3125H351.197V63.623H433.748V93.2432H351.197V116.554H436.903V152.133H307.205V4.9082H436.903V40.3125ZM755.509 41.7148H701.877V152.133H657.885V41.7148H604.253V4.9082H755.509V41.7148ZM809.894 152.133H765.901V4.9082H809.894V152.133ZM899.067 110.77H903.975L942.008 4.9082H987.577L932.368 152.133H870.674L815.64 4.9082H861.034L899.067 110.77ZM1123.08 40.3125H1037.37V63.623H1119.92V93.2432H1037.37V116.554H1123.08V152.133H993.377V4.9082H1123.08V40.3125ZM197.613 80.7988H231.439C244.935 80.7988 253.523 74.314 253.523 61.1689C253.523 48.1992 244.935 41.5391 231.439 41.5391H197.613V80.7988Z" fill="#F04C24"/>
+        </svg>
+
+    </section>
+
+
+    <!-- =========================
+         CONTENT
+    ========================== -->
+
+    <main class="content">
+
+        <div class="coming-soon">
+            Coming Soon
+        </div>
+
+        <p class="description">
+            Spective(•) is a design studio building distinctive brands and
+            digital experiences for ambitious businesses.
+        </p>
+
+
+
+
+    <!-- =========================
+         EMAIL SIGNUP
+    ========================== -->
+
+
+
+    <form
+        class="signup"
+        id="signupForm"
+        action="https://formspree.io/f/mkjnkany"
+        method="POST"
+    >
+
+        <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email me at launch"
+            autocomplete="email"
+            required
+        >
+
+        <button
+            type="submit"
+            id="submitButton"
+        >
+            Send
+        </button>
+
+        <input
+            type="hidden"
+            name="_subject"
+            value="New Spective Launch Notification Signup"
+        >
+
+        <input
+            type="hidden"
+            name="_format"
+            value="plain"
+        >
+
+        <div
+            id="formMessage"
+            class="form-message"
+        ></div>
+
+    </form>
+
+
+    </main>
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-left">
+            SPECTIVE DESIGN STUDIO
+        </div>
+
+        <div class="footer-right">
+            Perception Matters.
+        </div>
+
+    </footer>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   INTERACTIVE SPECTIVE DOT MATRIX
+===================================================== */
+
+const canvas = document.getElementById("dotCanvas");
+const ctx = canvas.getContext("2d");
+
+let width = 0;
+let height = 0;
+let dots = [];
+
+const mouse = {
+    x: -1000,
+    y: -1000
+};
+
+const CONFIG = {
+    spacing: 7,
+    radius: 1.25,
+    influence: 85,
+    pushStrength: 18,
+    scaleStrength: 1.35,
+    color: "#F04C24"
+};
+
+/*
+    Your exact SPECTIVE vector is used as an invisible mask.
+*/
+const SPECTIVE_SVG = `
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="1124"
+    height="158"
+    viewBox="0 0 1124 158"
+>
+    <path
+        d="M72.2344 0C113.071 7.48757e-05 141.64 12.2688 141.114 52.5801H101.854C99.9265 41.5383 90.9876 34.5274 71.1826 34.5273C53.8314 34.5273 45.9445 39.9608 45.9443 48.1982C45.9443 53.9821 49.9755 59.2405 62.5947 61.3438L78.1934 64.1475C107.112 69.0549 145.32 71.1587 145.32 109.893C145.32 140.915 120.783 157.215 71.8838 157.04C22.9844 156.865 -0.852675 141.09 0.0234375 104.109H39.6338C40.3351 115.326 49.8004 122.336 71.8838 122.512C91.8641 122.687 101.679 116.552 101.679 108.14C101.679 101.655 97.1215 96.7476 81.6982 94.2939L63.1201 91.3145C35.2527 86.5822 3.70431 81.8499 3.7041 46.0957C3.7041 17.3518 27.1906 0 72.2344 0ZM525.602 0C560.304 7.15155e-05 595.884 15.2483 601.492 62.9209H559.428C554.696 45.9202 542.252 38.0333 525.602 38.0332C504.044 38.0332 487.218 54.1575 487.218 78.5195C487.218 102.706 504.044 119.007 525.602 119.007C542.252 119.007 554.695 111.12 559.428 93.7686H601.492C595.883 141.791 560.655 157.04 525.602 157.04C476.527 157.04 443.576 125.316 443.576 78.5195C443.576 31.7233 476.527 0 525.602 0ZM234.945 4.9082C274.731 4.90824 297.866 23.136 297.866 61.1689C297.866 99.3773 274.731 117.43 235.12 117.43H197.613V152.133H153.621V4.9082H234.945ZM436.903 40.3125H351.197V63.623H433.748V93.2432H351.197V116.554H436.903V152.133H307.205V4.9082H436.903V40.3125ZM755.509 41.7148H701.877V152.133H657.885V41.7148H604.253V4.9082H755.509V41.7148ZM809.894 152.133H765.901V4.9082H809.894V152.133ZM899.067 110.77H903.975L942.008 4.9082H987.577L932.368 152.133H870.674L815.64 4.9082H861.034L899.067 110.77ZM1123.08 40.3125H1037.37V63.623H1119.92V93.2432H1037.37V116.554H1123.08V152.133H993.377V4.9082H1123.08V40.3125ZM197.613 80.7988H231.439C244.935 80.7988 253.523 74.314 253.523 61.1689C253.523 48.1992 244.935 41.5391 231.439 41.5391H197.613V80.7988Z"
+        fill="#ffffff"
+    />
+</svg>
+`;
+
+let spectiveImage = null;
+let svgReady = false;
+
+/*
+    Load the SVG once before attempting to create dots.
+    This fixes the blank-canvas race condition.
+*/
+function loadSpectiveSVG() {
+    return new Promise((resolve, reject) => {
+        const blob = new Blob(
+            [SPECTIVE_SVG],
+            { type: "image/svg+xml;charset=utf-8" }
+        );
+
+        const url = URL.createObjectURL(blob);
+        const image = new Image();
+
+        image.onload = () => {
+            URL.revokeObjectURL(url);
+            spectiveImage = image;
+            svgReady = true;
+            resolve();
+        };
+
+        image.onerror = () => {
+            URL.revokeObjectURL(url);
+            reject(new Error("Could not load the SPECTIVE SVG mask."));
+        };
+
+        image.src = url;
+    });
+}
+
+/*
+    Draw the SVG into an offscreen canvas, then sample its
+    visible pixels to create the dot field.
+*/
+function createDots() {
+    if (!svgReady || !spectiveImage || !width || !height) {
+        return;
+    }
+
+    const offscreen = document.createElement("canvas");
+    const octx = offscreen.getContext("2d", {
+        willReadFrequently: true
+    });
+
+    offscreen.width = width;
+    offscreen.height = height;
+
+    octx.clearRect(0, 0, width, height);
+
+    const svgRatio = 1124 / 158;
+
+    const horizontalPadding =
+        width <= 700 ? 0.96 : 0.92;
+
+    const renderWidth = width * horizontalPadding;
+    const renderHeight = Math.min(
+        renderWidth / svgRatio,
+        height
+    );
+
+    const actualRenderWidth =
+        renderHeight * svgRatio;
+
+    const offsetX =
+        (width - actualRenderWidth) / 2;
+
+    const offsetY =
+        (height - renderHeight) / 2;
+
+    octx.drawImage(
+        spectiveImage,
+        offsetX,
+        offsetY,
+        actualRenderWidth,
+        renderHeight
+    );
+
+    const imageData = octx.getImageData(
+        0,
+        0,
+        width,
+        height
+    );
+
+    const newDots = [];
+
+    for (let y = 0; y < height; y += CONFIG.spacing) {
+        for (let x = 0; x < width; x += CONFIG.spacing) {
+
+            const index = (y * width + x) * 4;
+            const alpha = imageData.data[index + 3];
+
+            if (alpha > 100) {
+                newDots.push({
+                    x,
+                    y,
+                    currentX: x,
+                    currentY: y,
+                    scale: 1
+                });
+            }
+        }
+    }
+
+    dots = newDots;
+}
+
+
+/* =====================================================
+   RESIZE
+===================================================== */
+
+function resizeCanvas() {
+    const rect = canvas.getBoundingClientRect();
+
+    const dpr = Math.min(
+        window.devicePixelRatio || 1,
+        2
+    );
+
+    width = Math.max(1, Math.floor(rect.width));
+    height = Math.max(1, Math.floor(rect.height));
+
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+    createDots();
+}
+
+window.addEventListener("resize", resizeCanvas);
+
+
+/* =====================================================
+   MOUSE
+===================================================== */
+
+canvas.addEventListener("pointermove", event => {
+    const rect = canvas.getBoundingClientRect();
+
+    mouse.x = event.clientX - rect.left;
+    mouse.y = event.clientY - rect.top;
+});
+
+canvas.addEventListener("pointerleave", () => {
+    mouse.x = -1000;
+    mouse.y = -1000;
+});
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (const dot of dots) {
+
+        const dx = dot.x - mouse.x;
+        const dy = dot.y - mouse.y;
+
+        const distance = Math.sqrt(
+            dx * dx + dy * dy
+        );
+
+        let targetX = dot.x;
+        let targetY = dot.y;
+        let targetScale = 1;
+
+        if (distance < CONFIG.influence) {
+
+            const strength =
+                1 - distance / CONFIG.influence;
+
+            const angle =
+                Math.atan2(dy, dx);
+
+            targetX +=
+                Math.cos(angle) *
+                strength *
+                CONFIG.pushStrength;
+
+            targetY +=
+                Math.sin(angle) *
+                strength *
+                CONFIG.pushStrength;
+
+            targetScale =
+                1 +
+                strength *
+                CONFIG.scaleStrength;
+        }
+
+        dot.currentX +=
+            (targetX - dot.currentX) * 0.13;
+
+        dot.currentY +=
+            (targetY - dot.currentY) * 0.13;
+
+        dot.scale +=
+            (targetScale - dot.scale) * 0.13;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            dot.currentX,
+            dot.currentY,
+            CONFIG.radius * dot.scale,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle = CONFIG.color;
+        ctx.fill();
+    }
+
+    requestAnimationFrame(animate);
+}
+
+
+/*
+    Start only after the SVG mask has loaded.
+*/
+loadSpectiveSVG()
+    .then(() => {
+        resizeCanvas();
+        animate();
+    })
+    .catch(error => {
+        console.error(error);
+    });
+
+
+/* =====================================================
+   MOUSE
+===================================================== */
+
+canvas.addEventListener(
+    "pointermove",
+    event => {
+
+        const rect =
+            canvas.getBoundingClientRect();
+
+        mouse.x =
+            event.clientX - rect.left;
+
+        mouse.y =
+            event.clientY - rect.top;
+
+    }
+);
+
+
+canvas.addEventListener(
+    "pointerleave",
+    () => {
+
+        mouse.x = -1000;
+        mouse.y = -1000;
+
+    }
+);
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+function animate() {
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    dots.forEach(dot => {
+
+        const dx =
+            dot.x - mouse.x;
+
+        const dy =
+            dot.y - mouse.y;
+
+        const distance =
+            Math.sqrt(
+                dx * dx +
+                dy * dy
+            );
+
+
+        let targetX = dot.x;
+        let targetY = dot.y;
+
+        let targetScale = 1;
+
+
+        /*
+            Cursor interaction:
+            dots gently move away from pointer.
+        */
+
+        if (distance < CONFIG.influence) {
+
+            const strength =
+                1 -
+                distance / CONFIG.influence;
+
+            const angle =
+                Math.atan2(
+                    dy,
+                    dx
+                );
+
+            targetX +=
+                Math.cos(angle) *
+                strength *
+                CONFIG.pushStrength;
+
+            targetY +=
+                Math.sin(angle) *
+                strength *
+                CONFIG.pushStrength;
+
+            targetScale =
+                1 +
+                strength *
+                CONFIG.scaleStrength;
+
+        }
+
+
+        /*
+            Smooth spring-like movement
+        */
+
+        dot.currentX +=
+            (targetX - dot.currentX) *
+            0.13;
+
+        dot.currentY +=
+            (targetY - dot.currentY) *
+            0.13;
+
+        dot.scale +=
+            (targetScale - dot.scale) *
+            0.13;
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            dot.currentX,
+            dot.currentY,
+            CONFIG.radius * dot.scale,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle =
+            CONFIG.color;
+
+        ctx.fill();
+
+    });
+
+
+    requestAnimationFrame(
+        animate
+    );
+
+}
+
+
+/* =====================================================
+   EMAIL FORM
+===================================================== */
+
+const form =
+    document.getElementById("signupForm");
+
+const email =
+    document.getElementById("email");
+
+const submitButton =
+    document.getElementById("submitButton");
+
+const formMessage =
+    document.getElementById("formMessage");
+
+
+form.addEventListener(
+    "submit",
+    async event => {
+
+        event.preventDefault();
+
+        const emailValue =
+            email.value.trim();
+
+
+        /*
+            Basic email validation
+        */
+
+        const emailRegex =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+        if (!emailRegex.test(emailValue)) {
+
+            showMessage(
+                "Please enter a valid email.",
+                "error"
+            );
+
+            email.focus();
+
+            return;
+
+        }
+
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending…";
+
+
+        try {
+
+            const response =
+                await fetch(
+                    form.action,
+                    {
+                        method: "POST",
+
+                        body:
+                            new FormData(form),
+
+                        headers: {
+                            "Accept":
+                                "application/json"
+                        }
+                    }
+                );
+
+
+            if (response.ok) {
+
+                email.value = "";
+
+                showMessage(
+                    "You're on the list.",
+                    "success"
+                );
+
+            } else {
+
+                throw new Error();
+
+            }
+
+        } catch (error) {
+
+            showMessage(
+                "Something went wrong. Please try again.",
+                "error"
+            );
+
+        }
+
+
+        submitButton.disabled = false;
+        submitButton.textContent = "Send";
+
+    }
+);
+
+
+function showMessage(
+    message,
+    type
+) {
+
+    formMessage.textContent =
+        message;
+
+    formMessage.className =
+        `form-message show ${type}`;
+
+    setTimeout(
+        () => {
+
+            formMessage.classList.remove(
+                "show"
+            );
+
+        },
+        4500
+    );
+
+}
+
+</script>
+
+</body>
+</html>
